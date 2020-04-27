@@ -1,12 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./components/App";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import { IdentityContextProvider } from "react-netlify-identity-widget";
 import * as serviceWorker from "./assets/serviceWorker";
+import "./assets/styles/css/tailwind.css";
+import "react-netlify-identity-widget/styles.css";
+import Hero from "./components/Hero";
 
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        <IdentityContextProvider url="https://nightclube.netlify.com">
+            <Hero />
+        </IdentityContextProvider>
     </React.StrictMode>,
     document.getElementById("root")
 );
