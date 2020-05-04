@@ -96,7 +96,7 @@ const Hero: React.FC = () => {
                     <div className="h-full max-w-2xl mx-auto">
                         <div className="text-xl font-sans text-gray-800 w-auto mx-auto ">
                             <form
-                                className="px-24 mx-4 xl:w-3/6 xl:ml-10 xl:px-0 xl:mx-0"
+                                className="p-4 md:mx-4 md:px-24 xl:w-3/6 xl:ml-10 xl:px-0 xl:mx-0"
                                 onSubmit={onUsrSubmit}
                             >
                                 {thresholdPrompt && (
