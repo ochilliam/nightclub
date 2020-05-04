@@ -52,8 +52,6 @@ const Hero: React.FC = () => {
             thresholdPrompt,
         });
 
-    const reachedMaxUsr = () => currentGuests === threshold && !thresholdPrompt;
-
     return (
         <>
             <div className="min-h-screen min-w-full bg-gray-100 font-sans">
@@ -81,7 +79,8 @@ const Hero: React.FC = () => {
                                 <h2 className="uppercase mb-4 text-center text-sm text-gray-700 sm:text-base md:text-lg md:text-center xl:text-2xl lg:mb-4">
                                     currently hosting
                                 </h2>
-                                {reachedMaxUsr ? (
+                                {currentGuests === threshold &&
+                                !thresholdPrompt ? (
                                     <>
                                         <p className="hidden bg-red-600 text-sm text-center text-white px-2 py-1 rounded-full sm:block">
                                             {currentGuests} guests! We’re full!
@@ -111,10 +110,10 @@ const Hero: React.FC = () => {
                     </div>
 
                     {/* ======================  (USER INPUT THRESHOLD) ======================= */}
-                    <div className="h-full max-w-2xl mx-auto">
-                        <div className="font-sans text-gray-800 w-auto mx-auto ">
+                    <div className="min-h-screen max-w-2xl mx-auto">
+                        <div className="w-full font-sans text-gray-800">
                             <form
-                                className="p-4 text-base md:mx-4 md:px-24 xl:w-3/6 xl:ml-10 xl:px-0 xl:mx-0"
+                                className="p-4 md:ml-24 md:pl-4 lg:ml-6 md:p-0"
                                 onSubmit={onUsrSubmit}
                             >
                                 {thresholdPrompt && (
@@ -167,7 +166,7 @@ const Hero: React.FC = () => {
 
                     {/* ======================  MAXIMUM ALERT ======================= */}
                     {currentGuests === threshold && !thresholdPrompt && (
-                        <div className="min-w-full h-8 fixed bottom-0 mb-5 inset-x-0 text-center md:hidden">
+                        <div className="min-w-full h-8 fixed bottom-0 mb-4 inset-x-0 text-center md:hidden">
                             <p className="bg-red-600 text-white text-sm m-2 py-2 rounded-md ">
                                 {currentGuests} guests! We’re full! No more!
                             </p>
