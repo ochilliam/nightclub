@@ -167,7 +167,7 @@ const Hero: React.FC = () => {
                     {/* ======================  MAXIMUM ALERT ======================= */}
                     {currentGuests === threshold && !thresholdPrompt && (
                         <div className="min-w-full h-8 fixed bottom-0 mb-4 inset-x-0 text-center md:hidden">
-                            <p className="bg-red-600 text-white text-sm m-2 py-3 rounded-md ">
+                            <p className="bg-red-600 text-white text-sm m-1 py-2 rounded-md ">
                                 {currentGuests} guests! We’re full! No more!
                             </p>
                         </div>
