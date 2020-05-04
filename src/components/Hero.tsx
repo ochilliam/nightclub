@@ -54,8 +54,8 @@ const Hero: React.FC = () => {
 
     return (
         <>
-            <div className="min-h-screen min-w-full bg-gray-100 font-sans">
-                <div className="w-auto mx-auto pt-32 xl:max-w-screen-lg">
+            <div className="min-w-full bg-gray-100 font-sans">
+                <div className="w-auto h-full mx-auto pt-48 xl:max-w-screen-lg">
                     <div
                         className={`grid grid-cols-2 grid-rows-1 row-gap-16 p-3 md:row-gap-0 md:grid-rows-none md:grid-cols-5 ${
                             thresholdPrompt && "hidden"
@@ -110,8 +110,8 @@ const Hero: React.FC = () => {
                     </div>
 
                     {/* ======================  (USER INPUT THRESHOLD) ======================= */}
-                    <div className="min-h-screen max-w-2xl mx-auto">
-                        <div className="w-full font-sans text-gray-800">
+                    <div className="max-w-2xl mx-auto">
+                        <div className="w-full font-sans text-gray-800 mb-12">
                             <form
                                 className="p-4 md:ml-24 md:pl-4 lg:ml-6 md:p-0"
                                 onSubmit={onUsrSubmit}
