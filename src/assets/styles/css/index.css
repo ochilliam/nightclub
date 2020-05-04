@@ -59,4 +59,5 @@ body {
 
 html {
     @apply overflow-hidden;
+    user-select: none;
 }
