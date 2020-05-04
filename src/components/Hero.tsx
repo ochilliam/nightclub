@@ -11,7 +11,7 @@ interface State {
 const Hero: React.FC = () => {
     const [state, updateState] = useState<State>({
         currentGuests: 0,
-        threshold: 0,
+        threshold: 5,
         thresholdPrompt: false,
     });
     const { currentGuests, threshold, thresholdPrompt } = state;
@@ -55,9 +55,9 @@ const Hero: React.FC = () => {
     return (
         <>
             <div className="min-h-screen min-w-full bg-gray-100 font-sans">
-                <div className="w-auto h-full mx-auto py-24 md:max-w-screen-md xl:max-w-screen-lg lg:py-40">
+                <div className="w-auto mx-auto py-24 md:max-w-screen-md xl:max-w-screen-lg">
                     <div
-                        className={`grid grid-cols-5 ${
+                        className={`grid grid-cols-2 grid-rows-1 row-gap-16 p-3 md:row-gap-0 md:grid-rows-none md:grid-cols-5 ${
                             thresholdPrompt && "hidden"
                         }`}
                     >
@@ -68,17 +68,17 @@ const Hero: React.FC = () => {
                         >
                             <FiChevronUp className="counter-btn--svg" />
                         </button>
-                        <div className="w-full h-56 border-2 border-gray-500 rounded-md col-start-2 col-end-5 flex flex-col items-center justify-center md:flex-row">
+                        <div className="w-full flex flex-1 items-center justify-center h-56 border-2 border-gray-500 rounded-md col-start-1 col-end-3 md:col-start-2 md:col-end-5">
                             <img
                                 src={BarSVG}
-                                className="h-56 inline"
+                                className="h-56"
                                 alt="two people in bar"
                             />
-                            <div className="block w-auto lg:p-8">
-                                <h2 className="uppercase mb-2 text-base text-gray-700 md:text-lg md:text-center xl:text-2xl lg:mb-4">
+                            <div className="lg:p-4">
+                                <h2 className="uppercase mb-4 text-center text-base text-gray-700 md:text-lg md:text-center xl:text-2xl lg:mb-4">
                                     currently hosting
                                 </h2>
-                                <p className="w-auto py-1 font-medium text-yellow-100 mx-10 mb-5 tracking-wide rounded-full bg-blue-700 text-center md:py-2 md:mx-8">
+                                <p className="w-1/2 text-center mx-auto py-1 font-medium text-white rounded-full bg-blue-700 md:py-2">
                                     {currentGuests}
                                 </p>
                             </div>
@@ -93,16 +93,16 @@ const Hero: React.FC = () => {
                     </div>
 
                     {/* ======================  (USER INPUT THRESHOLD) ======================= */}
-                    <div className="h-full max-w-2xl mx-auto my-4">
+                    <div className="h-full max-w-2xl mx-auto">
                         <div className="text-xl font-sans text-gray-800 w-auto mx-auto ">
                             <form
-                                className="w-3/6 md:w-1/2 xl:ml-8"
+                                className="px-24 mx-4 xl:w-3/6 xl:ml-10 xl:px-0 xl:mx-0"
                                 onSubmit={onUsrSubmit}
                             >
                                 {thresholdPrompt && (
                                     <label htmlFor="threshold">
                                         Hi there, <br />
-                                        before you continue, we you need to set
+                                        before you continue, we need you to set
                                         a maximum guests number so that we can
                                         alarm you when the bar is full.
                                     </label>
@@ -113,7 +113,7 @@ const Hero: React.FC = () => {
                                         <a
                                             href="#1"
                                             onClick={usrNewThreshold}
-                                            className="fixed top-0 left-0 text-sm mx-3 mt-3 hover:text-blue-600 hover:underline md:pr-4 md:mx-0 md:static"
+                                            className="fixed top-0 left-0 text-sm mx-3 mt-3 hover:text-blue-600 hover:underline md:mx-0 md:static md:mr-2"
                                         >
                                             Need a new threshold?
                                         </a>
@@ -150,8 +150,8 @@ const Hero: React.FC = () => {
 
                     {/* ======================  MAXIMUM ALERT ======================= */}
                     {currentGuests === threshold && !thresholdPrompt && (
-                        <div className="w-99 m-1 fixed bottom-0 text-center md:top-0 md:w-99-lg lg:left-0">
-                            <p className="bg-red-600 text-white py-2 tracking-wide rounded-md">
+                        <div className="w-99 h-8 m-1 fixed bottom-0 text-center md:top-0 md:w-99-lg lg:left-0 h-12">
+                            <p className="bg-red-600 text-white py-3 tracking-wide rounded-md">
                                 {currentGuests} guests! We’re full! No more!
                             </p>
                         </div>

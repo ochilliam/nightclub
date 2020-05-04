@@ -1,29 +1,31 @@
 @tailwind base;
 
 @tailwind components;
+
+input {
+    @apply w-auto px-3 border-2 border-gray-400 rounded-md py-1;
+}
+
 .counter-btn {
-    @apply border-2 border-gray-500 rounded-md h-12 w-12 flex items-center justify-center shadow;
+    @apply row-end-3 border-2 border-gray-500 rounded-md h-16 w-16 flex items-center justify-center shadow;
     justify-self: center;
     align-self: center;
 }
 
 @screen md {
     .counter-btn {
-        @apply border-2 border-gray-500 rounded-md h-16 w-16 flex items-center justify-center shadow;
+        @apply row-end-auto border-2 border-gray-500 rounded-md h-16 w-16 flex items-center justify-center shadow;
         justify-self: center;
         align-self: center;
     }
 }
+
 .counter-btn:disabled svg {
     @apply opacity-50;
 }
 
 .counter-btn:disabled {
     @apply cursor-not-allowed;
-}
-
-input {
-    @apply w-auto px-3 border-2 border-gray-400 rounded-md py-1;
 }
 
 .counter-btn--svg {
