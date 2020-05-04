@@ -54,7 +54,7 @@ const Hero: React.FC = () => {
 
     return (
         <>
-            <div className="min-w-full h-screen bg-gray-100 font-sans">
+            <div className="min-w-full min-h-screen bg-gray-100 font-sans">
                 <div className="w-auto h-full mx-auto pt-48 xl:max-w-screen-lg">
                     <div
                         className={`grid grid-cols-2 grid-rows-1 row-gap-16 p-3 md:row-gap-0 md:grid-rows-none md:grid-cols-5 ${
