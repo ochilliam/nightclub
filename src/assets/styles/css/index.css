@@ -7,7 +7,7 @@ input {
 }
 
 .counter-btn {
-    @apply row-end-3 border-2 border-gray-500 rounded-md h-16 w-16 flex items-center justify-center shadow;
+    @apply row-end-3 border-2 border-gray-500 rounded-md h-12 w-12 flex items-center justify-center shadow;
     justify-self: center;
     align-self: center;
 }
@@ -20,6 +20,10 @@ input {
     }
 }
 
+.counter-btn:focus {
+    @apply shadow-outline outline-none;
+}
+
 .counter-btn:disabled svg {
     @apply opacity-50;
 }
@@ -29,16 +33,26 @@ input {
 }
 
 .counter-btn--svg {
-    @apply w-16 h-16 stroke-current text-gray-700 w-12 h-12 stroke-current text-gray-700;
+    @apply w-8 h-8 stroke-current text-gray-700  stroke-current text-gray-700;
+}
+
+@screen md {
+    .counter-btn--svg {
+        @apply w-12 h-12 stroke-current text-gray-700 stroke-current text-gray-700;
+    }
 }
 
 @tailwind utilities;
 
 body {
-    margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
         "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
         "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    min-height: -webkit-fill-available;
+}
+
+html {
+    @apply overflow-hidden;
 }

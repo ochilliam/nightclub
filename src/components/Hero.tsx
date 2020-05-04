@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiChevronUp, FiChevronDown } from "react-icons/fi";
-import BarSVG from "../assets/bar.svg";
+import BarSVG from "../assets/bar.min.svg";
 
 interface State {
     currentGuests: number;
@@ -11,7 +11,7 @@ interface State {
 const Hero: React.FC = () => {
     const [state, updateState] = useState<State>({
         currentGuests: 0,
-        threshold: 5,
+        threshold: 0,
         thresholdPrompt: false,
     });
     const { currentGuests, threshold, thresholdPrompt } = state;
@@ -52,10 +52,12 @@ const Hero: React.FC = () => {
             thresholdPrompt,
         });
 
+    const reachedMaxUsr = () => currentGuests === threshold && !thresholdPrompt;
+
     return (
         <>
             <div className="min-h-screen min-w-full bg-gray-100 font-sans">
-                <div className="w-auto mx-auto py-24 md:max-w-screen-md xl:max-w-screen-lg">
+                <div className="w-auto mx-auto py-24 xl:max-w-screen-lg">
                     <div
                         className={`grid grid-cols-2 grid-rows-1 row-gap-16 p-3 md:row-gap-0 md:grid-rows-none md:grid-cols-5 ${
                             thresholdPrompt && "hidden"
@@ -71,18 +73,34 @@ const Hero: React.FC = () => {
                         <div className="w-full flex flex-1 items-center justify-center h-56 border-2 border-gray-500 rounded-md col-start-1 col-end-3 md:col-start-2 md:col-end-5">
                             <img
                                 src={BarSVG}
-                                className="h-56"
+                                className="h-56 -ml-2"
                                 alt="two people in bar"
                             />
-                            <div className="lg:p-4">
-                                <h2 className="uppercase mb-4 text-center text-base text-gray-700 md:text-lg md:text-center xl:text-2xl lg:mb-4">
+
+                            <div className="-ml-2 lg:p-4">
+                                <h2 className="uppercase mb-4 text-center text-sm text-gray-700 sm:text-base md:text-lg md:text-center xl:text-2xl lg:mb-4">
                                     currently hosting
                                 </h2>
-                                <p className="w-1/2 text-center mx-auto py-1 font-medium text-white rounded-full bg-blue-700 md:py-2">
-                                    {currentGuests}
-                                </p>
+                                {reachedMaxUsr ? (
+                                    <>
+                                        <p className="hidden bg-red-600 text-sm text-center text-white px-2 py-1 rounded-full sm:block">
+                                            {currentGuests} guests! We’re full!
+                                            No more!
+                                        </p>
+                                        {/* ==================== ONLY SHOWN FOR MOBILE ==================== */}
+                                        <p className="w-2/3 text-center mx-auto py-1 font-medium text-white rounded-full bg-blue-700 md:w-1/2 md:py-2 sm:hidden">
+                                            {currentGuests}
+                                        </p>
+                                        {/* ==================== /ONLY SHOWN FOR MOBILE ==================== */}
+                                    </>
+                                ) : (
+                                    <p className="w-2/3 text-center mx-auto py-1 font-medium text-white rounded-full bg-blue-700 md:w-1/2 md:py-2">
+                                        {currentGuests}
+                                    </p>
+                                )}
                             </div>
                         </div>
+
                         <button
                             className="counter-btn"
                             onClick={decrement}
@@ -113,13 +131,12 @@ const Hero: React.FC = () => {
                                         <a
                                             href="#1"
                                             onClick={usrNewThreshold}
-                                            className="fixed top-0 left-0 text-sm mx-3 mt-3 hover:text-blue-600 hover:underline md:mx-0 md:static md:mr-2"
+                                            className="fixed top-0 left-0 text-sm mx-3 mt-3 text-blue-600 underline md:mx-0 md:static md:mr-2"
                                         >
-                                            Need a new threshold?
+                                            Need to change maximum guests?
                                         </a>
                                         <span className="fixed top-0 left-0 mx-3 mt-8 text-sm text-gray-600 md:static md:m-0">
-                                            current threshold:{" "}
-                                            <b>{threshold}</b>
+                                            current: <b>{threshold}</b>
                                         </span>
                                     </label>
                                 )}
@@ -139,7 +156,7 @@ const Hero: React.FC = () => {
                                     />
                                     <input
                                         type="submit"
-                                        className="w-32 ml-2"
+                                        className="text-sm uppercase w-32 ml-2"
                                         value="submit"
                                     />
                                 </div>
@@ -150,8 +167,8 @@ const Hero: React.FC = () => {
 
                     {/* ======================  MAXIMUM ALERT ======================= */}
                     {currentGuests === threshold && !thresholdPrompt && (
-                        <div className="w-99 h-8 m-1 fixed bottom-0 text-center md:top-0 md:w-99-lg lg:left-0 h-12">
-                            <p className="bg-red-600 text-white py-3 tracking-wide rounded-md">
+                        <div className="min-w-full h-8 fixed bottom-0 inset-x-0 text-center md:hidden">
+                            <p className="bg-red-600 text-white m-2 py-3  rounded-md ">
                                 {currentGuests} guests! We’re full! No more!
                             </p>
                         </div>
