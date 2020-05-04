@@ -9,7 +9,7 @@ import Hero from "./components/Hero";
 ReactDOM.render(
     <React.StrictMode>
         <IdentityContextProvider url="https://nightclube.netlify.com">
-            <Hero />
+            <Hero  />
         </IdentityContextProvider>
     </React.StrictMode>,
     document.getElementById("root")
