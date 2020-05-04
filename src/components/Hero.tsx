@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
             <div className="min-w-full min-h-screen bg-gray-100 font-sans">
                 <div className="w-auto h-full mx-auto pt-48 xl:max-w-screen-lg">
                     <div
-                        className={`grid grid-cols-2 grid-rows-1 row-gap-16 p-3 md:row-gap-0 md:grid-rows-none md:grid-cols-5 ${
+                        className={`grid grid-cols-2 grid-rows-1 row-gap-16 p-2 md:row-gap-0 md:grid-rows-none md:grid-cols-5 ${
                             thresholdPrompt && "hidden"
                         }`}
                     >
@@ -167,7 +167,7 @@ const Hero: React.FC = () => {
                     {/* ======================  MAXIMUM ALERT ======================= */}
                     {currentGuests === threshold && !thresholdPrompt && (
                         <div className="min-w-full h-8 fixed bottom-0 mb-4 inset-x-0 text-center md:hidden">
-                            <p className="bg-red-600 text-white text-sm m-1 py-2 rounded-md ">
+                            <p className="bg-red-600 text-white text-sm m-2 mb-3 h-10 py-2 rounded-md ">
                                 {currentGuests} guests! We’re full! No more!
                             </p>
                         </div>
