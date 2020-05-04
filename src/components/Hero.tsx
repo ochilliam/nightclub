@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
     const [state, updateState] = useState<State>({
         currentGuests: 0,
         threshold: 0,
-        thresholdPrompt: false,
+        thresholdPrompt: true,
     });
     const { currentGuests, threshold, thresholdPrompt } = state;
 
@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
     return (
         <>
             <div className="min-h-screen min-w-full bg-gray-100 font-sans">
-                <div className="w-auto mx-auto py-24 xl:max-w-screen-lg">
+                <div className="w-auto mx-auto pt-32 xl:max-w-screen-lg">
                     <div
                         className={`grid grid-cols-2 grid-rows-1 row-gap-16 p-3 md:row-gap-0 md:grid-rows-none md:grid-cols-5 ${
                             thresholdPrompt && "hidden"
@@ -112,9 +112,9 @@ const Hero: React.FC = () => {
 
                     {/* ======================  (USER INPUT THRESHOLD) ======================= */}
                     <div className="h-full max-w-2xl mx-auto">
-                        <div className="text-xl font-sans text-gray-800 w-auto mx-auto ">
+                        <div className="font-sans text-gray-800 w-auto mx-auto ">
                             <form
-                                className="p-4 md:mx-4 md:px-24 xl:w-3/6 xl:ml-10 xl:px-0 xl:mx-0"
+                                className="p-4 text-base md:mx-4 md:px-24 xl:w-3/6 xl:ml-10 xl:px-0 xl:mx-0"
                                 onSubmit={onUsrSubmit}
                             >
                                 {thresholdPrompt && (
@@ -167,8 +167,8 @@ const Hero: React.FC = () => {
 
                     {/* ======================  MAXIMUM ALERT ======================= */}
                     {currentGuests === threshold && !thresholdPrompt && (
-                        <div className="min-w-full h-8 fixed bottom-0 inset-x-0 text-center md:hidden">
-                            <p className="bg-red-600 text-white m-2 py-3  rounded-md ">
+                        <div className="min-w-full h-8 fixed bottom-0 mb-5 inset-x-0 text-center md:hidden">
+                            <p className="bg-red-600 text-white text-sm m-2 py-2 rounded-md ">
                                 {currentGuests} guests! We’re full! No more!
                             </p>
                         </div>
