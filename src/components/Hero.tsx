@@ -63,6 +63,7 @@ const Hero: React.FC = () => {
                     >
                         <button
                             disabled={currentGuests === threshold && true}
+                            data-testid="increment"
                             className="counter-btn"
                             onClick={increment}
                         >
@@ -102,6 +103,7 @@ const Hero: React.FC = () => {
 
                         <button
                             className="counter-btn"
+                            data-testid="decrement"
                             onClick={decrement}
                             disabled={currentGuests <= 0 && true}
                         >
@@ -147,6 +149,7 @@ const Hero: React.FC = () => {
                                     <input
                                         type="number"
                                         onChange={onUsrThreshold}
+                                        data-testid="usrInputThreshold"
                                         className="w-full"
                                         placeholder="i.e 25"
                                         value={threshold || ""}
